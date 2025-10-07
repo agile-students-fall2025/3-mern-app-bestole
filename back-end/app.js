@@ -41,8 +41,17 @@ app.get('/messages', async (req, res) => {
 })
 
 app.get('/about-us', async (req, res) => {
-  // load all messages from database
-  
+  try {
+    const AboutUs = res.json({
+      myParagraph:"To start, I will info dump random facts about myself. My name is Walker Tupman, and I am a student New York University studying Computer Science and French. I grew up in Memphis, Tennessee. I have two cats -- Soup and Lenny -- who live with me in NYC. I like to read, play video games, watch movies, sit in parks, and learn languages.\n My plans for the future. I want to hopefully get a job, so I can stay in NYC. I really hate where I grew up, so I would prefer to not go back to Memphis where there isn't much of a tech industry. If I don't end up getting a job here within about 6 months after graduation, I will likely have to move back home unfortunately. My plan (in the somewhat likely event I don't get a job that quickly) is to go to Grad School in France. I've been looking at the program at La Sorbonne in Paris, and I would do a masters in Computer Science in french there."
+    })
+  } catch (err) {
+    console.error(err)
+    res.status(400).json({
+      error: err,
+      status: 'error retrieving about us info',
+    })
+  }
 })
 
 // a route to handle fetching a single message by its id
