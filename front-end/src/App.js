@@ -24,6 +24,10 @@ const App = props => {
               path="/messages/:messageId"
               element={<MessageStandalone />}
             />
+
+            {/* a route to see a list of all messages */}
+            <Route path="/about-us" element={<AboutUs />} />
+            
           </Routes>
         </main>
         <Footer />
